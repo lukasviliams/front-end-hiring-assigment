@@ -1,0 +1,1 @@
+export { default } from "file:///Users/lukasviliams/Desktop/development/personal/front-end-hiring-assigment/node_modules/.pnpm/@nuxt+vite-builder@4.2.2_@types+node@25.0.3_eslint@9.39.2_jiti@2.6.1__magicast@0.5.1_nu_d8363640875a638c1e45414835528443/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
