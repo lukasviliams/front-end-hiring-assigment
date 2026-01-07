@@ -19,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+//in real word application we need form wrapper for validation and something like zod
 const {
   disabled,
   type = "text",
@@ -37,7 +38,6 @@ const model = defineModel({
 });
 
 const validationError = computed(() => {
-  console.log("Validating with error:", error);
   if (error) return error;
 
   // Inner error

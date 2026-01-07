@@ -27,6 +27,7 @@
       <template #footer>
         <ModalsModalControls
           :is-saving="isSaving"
+          :has-changed="hasChanged"
           @cancel="handleCloseEditDialog"
           @save="saveTask"
         />
@@ -36,6 +37,7 @@
 </template>
 
 <script setup lang="ts">
+import { isEqual } from "lodash";
 definePageMeta({
   middleware: "validate-task-id",
 });
@@ -47,6 +49,10 @@ const { showError } = useNotification();
 
 const { task, pending, refresh, inputModel } = await useTask(id);
 const { isOpened, openDialog, closeDialog } = useModal();
+const initialTitle = task.value?.title || "";
+const hasChanged = computed(() => {
+  return !isEqual(initialTitle, inputModel.value.trim());
+});
 
 const {
   execute: updateTask,

@@ -7,8 +7,8 @@
     Cancel
   </ButtonsDefaultButton>
   <ButtonsDefaultButton
-    variant="primary"
-    :disabled="isSaving"
+    :variant="!hasChanged ? 'secondary' : 'primary'"
+    :disabled="isDisabled"
     @click="$emit('save')"
   >
     {{ isSaving ? "Saving..." : "Save" }}
@@ -16,9 +16,14 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const { hasChanged, isSaving } = defineProps<{
   isSaving: boolean;
+  hasChanged: boolean;
 }>();
+
+const isDisabled = computed(() => {
+  return isSaving || !hasChanged;
+});
 
 defineEmits<{
   cancel: [];
